@@ -22,12 +22,12 @@
             <Button x:Name="Btn_Consultant"
                     Margin="10"
                     Width="100"
-                    Height="30">Consultant</Button>
+                    Height="30" Click="Btn_Consultant_Click">Consultant</Button>
 
             <Button x:Name="Btn_Manager"
                     Margin="10"
                     Width="100"
-                    Height="30">Manager</Button>
+                    Height="30" Click="Btn_Manager_Click">Manager</Button>
         </StackPanel>
             
     </Grid>

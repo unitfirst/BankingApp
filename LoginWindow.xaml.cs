@@ -23,5 +23,19 @@ namespace BankingApp
         {
             InitializeComponent();
         }
+
+        private void Btn_Consultant_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void Btn_Manager_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 }
