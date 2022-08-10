@@ -60,7 +60,7 @@ namespace BankingApp.Models
                 if (passport == value) return;
 
                 passport = value;
-                OnPropertyChanged(Passport);
+                OnPropertyChanged(Passport.ToString());
             }
         }
 

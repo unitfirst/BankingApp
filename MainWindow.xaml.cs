@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BankingApp.Models;
+using BankingApp.Services;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,10 @@ namespace BankingApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Repository repo;
+        private string path = $"{Environment.CurrentDirectory}\\accounts.json";
+        private BindingList<Account> accounts;
+
         public MainWindow(bool access)
         {
             InitializeComponent();
@@ -32,6 +39,10 @@ namespace BankingApp
             {
                 UserRole.Text = "Role: Manager";
             }
+
+            repo = new Repository(path);
+            DataContext = repo;
+            accounts = repo.GetList();
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
