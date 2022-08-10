@@ -80,7 +80,7 @@ namespace BankingApp.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Account(int id, string firstName, string lastName, string phoneNumber, string passport, bool isNew)
+        public Account(string firstName, string lastName, string phoneNumber, string passport)
         {
             Id = nextId();
             FirstName = firstName;

@@ -11,14 +11,14 @@ namespace BankingApp.Services
 {
     internal class Repository: IEnumerable<Account>
     {
-        private readonly List<Account> _list = new List<Account>();
+        private readonly List<Account> list = new List<Account>();
 
         public Repository(string path)
         {
-            Path = path;
+            this.path = path;
         }
 
-        private string Path { get; set; }
+        private string path { get; set; }
 
         public IEnumerator<Account> GetEnumerator()
         {
@@ -27,24 +27,17 @@ namespace BankingApp.Services
 
         public List<Account> GetList()
         {
-            if (Path != null)
+            if (path != null)
             {
-                using (var file = new StreamReader(Path))
+                using (var file = new StreamReader(path))
                 {
                     string line;
                     while ((line = file.ReadLine()) != null)
                     {
                         var field = line.Split(',');
-                        var account = new Account
-                        {
-                            Id = int.Parse(field[0]),
-                            FirstName = field[1],
-                            LastName = field[2],
-                            PhoneNumber = field[4],
-                            Passport = field[5]
-                        };
+                        Account account = new Account(field[0], field[1], field[2], field[3]);
 
-                        _list.Add(account);
+                        list.Add(account);
                     }
 
                     file.Close();
@@ -54,12 +47,12 @@ namespace BankingApp.Services
             else
             {
                 var text = "This, path, is, not, correct";
-                File.WriteAllText(Path, text);
+                File.WriteAllText(path, text);
 
                 Console.WriteLine("File is not correct.");
             }
 
-            return _list;
+            return list;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
