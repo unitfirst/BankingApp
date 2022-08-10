@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,5 +24,62 @@ namespace BankingApp.Models
         private string lastName;
         private string phoneNumber;
         private string passport;
+
+        public DateTime AddTime { get; set; } = DateTime.Now;
+        public DateTime LastUpdated { get; set; } = DateTime.Now;
+        public int Id { get; set; }
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                if (firstName == value) return;
+
+                firstName = value;
+                OnPropertyChanged(FirstName);
+            }
+        }
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                if (lastName == value) return;
+
+                lastName = value;
+                OnPropertyChanged(LastName);
+            }
+        }
+        public string PhoneNumber
+        {
+            get => phoneNumber;
+            set
+            {
+                if (phoneNumber == value) return;
+
+                phoneNumber = value;
+                OnPropertyChanged(PhoneNumber);
+            }
+        }
+        public string Passport
+        {
+            get => passport;
+            set
+            {
+                if (passport == value) return;
+
+                passport = value;
+                OnPropertyChanged(Passport);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
     }
 }
