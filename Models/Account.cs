@@ -25,8 +25,8 @@ namespace BankingApp.Models
         private string phoneNumber;
         private string passport;
 
-        public DateTime AddTime { get; set; } = DateTime.Now;
-        public DateTime LastUpdated { get; set; } = DateTime.Now;
+        public DateTime AddTime { get; set; }
+        public DateTime LastUpdated { get; set; }
         public int Id { get; set; }
         public string FirstName
         {
@@ -80,10 +80,8 @@ namespace BankingApp.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Account(DateTime addTime, DateTime lastUpdated, int id, string firstName, string secondName, string lastName, string phoneNumber, string passport, bool isNew)
+        public Account(int id, string firstName, string lastName, string phoneNumber, string passport, bool isNew)
         {
-            AddTime = addTime;
-            LastUpdated = lastUpdated;
             Id = nextId();
             FirstName = firstName;
             LastName = lastName;
