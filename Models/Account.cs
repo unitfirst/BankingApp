@@ -18,9 +18,9 @@ namespace BankingApp.Models
             return staticId++;
         }
 
-        private string _firstName;
-        private string _lastName;
-        private string _phoneNumber;
-        private string _passport;
+        private string firstName;
+        private string lastName;
+        private string phoneNumber;
+        private string passport;
     }
 }
