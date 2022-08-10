@@ -109,5 +109,51 @@ namespace BankingApp.Models
                 && this.PhoneNumber == other.PhoneNumber
                 && this.Passport == other.Passport;
         }
+
+        public class SortById : IComparer<Account>
+        {
+            public int Compare(Account x, Account y)
+            {
+                Account X = x as Account;
+                Account Y = y as Account;
+
+                if (X.Id == Y.Id) return 0;
+                else if (X.Id > Y.Id) return 0;
+                else return -1;
+            }
+        }
+
+        public class SortByFirstName : IComparer<Account>
+        {
+            public int Compare(Account x, Account y)
+            {
+                Account X = x as Account;
+                Account Y = y as Account;
+
+                return string.Compare(X.FirstName, Y.FirstName);
+            }
+        }
+
+        public class SortByLastName : IComparer<Account>
+        {
+            public int Compare(Account x, Account y)
+            {
+                Account X = x as Account;
+                Account Y = y as Account;
+
+                return string.Compare(X.LastName, Y.LastName);
+            }
+        }
+
+        public class SortByPhone : IComparer<Account>
+        {
+            public int Compare(Account x, Account y)
+            {
+                Account X = x as Account;
+                Account Y = y as Account;
+
+                return string.Compare(X.PhoneNumber, Y.PhoneNumber);
+            }
+        }
     }
 }
