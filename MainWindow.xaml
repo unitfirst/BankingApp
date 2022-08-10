@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="560" 
-        Width="940">
+        Width="940"
+        MinWidth="640"
+        MinHeight="480">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
@@ -74,12 +77,12 @@
 
         <DataGrid 
             x:Name="DgAccounts"
-            AutoGenerateColumns="False"
-            Margin="10"
-            Grid.Row="3"
             Grid.Column="1"
-            Grid.ColumnSpan="6"
-            Grid.RowSpan="6"
+            Grid.Row="3"
+            Grid.RowSpan="7"
+            Grid.ColumnSpan="4"
+            Margin="20"
+            AutoGenerateColumns="False"
             CanUserSortColumns="True"
             CanUserReorderColumns="True"
             CanUserResizeColumns="True"
@@ -107,15 +110,9 @@
                     Width="120*" 
                     IsReadOnly="True"/>
                 <DataGridTextColumn 
-                    Binding="{Binding SecondName}"
-                    x:Name="SecondNameCol"
-                    Header="Second name" 
-                    Width="120*" 
-                    IsReadOnly="True"/>
-                <DataGridTextColumn 
-                    Binding="{Binding ThirdName}"
-                    x:Name="ThirdNameCol"
-                    Header="Third name" 
+                    Binding="{Binding LastName}"
+                    x:Name="LastNameCol"
+                    Header="Last name" 
                     Width="120*" 
                     IsReadOnly="True"/>
                 <DataGridTextColumn 
@@ -133,6 +130,27 @@
             </DataGrid.Columns>
 
         </DataGrid>
+
+        <StackPanel
+            Orientation="Vertical"
+            Grid.Column="5"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="7"
+            Margin="20"
+            >
+
+            <TextBlock Text="First name" Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock Text="Last name" Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock Text="Phone number" Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock Text="Passport" Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <Button x:Name="Btn_ChangeAccountInfo" Height="30" Margin="0 30" Content="APPLY"/>
+
+        </StackPanel>
 
         <StackPanel 
             Orientation="Horizontal"

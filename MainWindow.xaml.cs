@@ -23,6 +23,15 @@ namespace BankingApp
         public MainWindow(bool access)
         {
             InitializeComponent();
+
+            if (!access)
+            {
+                UserRole.Text = "Role: Consultant";
+            }
+            else
+            {
+                UserRole.Text = "Role: Manager";
+            }
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
