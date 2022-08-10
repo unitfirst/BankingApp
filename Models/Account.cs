@@ -91,5 +91,23 @@ namespace BankingApp.Models
             Passport = passport;
         }
 
+        public string ToString(bool access)
+        {
+            return
+                $"{Id}" +
+                $"{FirstName}" +
+                $"{LastName}" +
+                $"{PhoneNumber}" +
+                $"{Passport}";
+        }
+
+        public bool Equals(Account other)
+        {
+            return this.Id == other.Id
+                && this.FirstName == other.FirstName
+                && this.LastName == other.LastName
+                && this.PhoneNumber == other.PhoneNumber
+                && this.Passport == other.Passport;
+        }
     }
 }
