@@ -10,20 +10,11 @@ namespace BankingApp.Models
 {
     internal class Account
     {
-        private static int staticId;
-        static Account()
-        {
-            staticId = 0;
-        }
-        private static int nextId()
-        {
-            return staticId++;
-        }
-
+        private int id;
         private string firstName;
         private string lastName;
         private string phoneNumber;
-        private string passport;
+        private int passport;
 
         public DateTime AddTime { get; set; }
         public DateTime LastUpdated { get; set; }
@@ -61,7 +52,7 @@ namespace BankingApp.Models
                 OnPropertyChanged(PhoneNumber);
             }
         }
-        public string Passport
+        public int Passport
         {
             get => passport;
             set
@@ -78,15 +69,6 @@ namespace BankingApp.Models
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public Account(string firstName, string lastName, string phoneNumber, string passport)
-        {
-            Id = nextId();
-            FirstName = firstName;
-            LastName = lastName;
-            PhoneNumber = phoneNumber;
-            Passport = passport;
         }
 
         public string ToString(bool access)

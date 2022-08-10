@@ -43,7 +43,7 @@ namespace BankingApp
 
         private void AboutButton_Click(Object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hey! This is my first Windows app \nv0.01");
+            MessageBox.Show("Hey! This is my first Windows app \nv0.10");
         }
     }
 }

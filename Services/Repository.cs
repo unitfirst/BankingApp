@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,9 +36,17 @@ namespace BankingApp.Services
                     while ((line = file.ReadLine()) != null)
                     {
                         var field = line.Split(',');
-                        Account account = new Account(field[0], field[1], field[2], field[3]);
+                        Account account = new Account
+                        {
+                            Id = Convert.ToInt32(field[0]),
+                            FirstName = field[1],
+                            LastName = field[2],
+                            PhoneNumber = field[3],
+                            Passport = Convert.ToInt32(field[4])
+                        };
 
                         list.Add(account);
+                        Debug.WriteLine(list);
                     }
 
                     file.Close();
