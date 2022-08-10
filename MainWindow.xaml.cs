@@ -24,5 +24,17 @@ namespace BankingApp
         {
             InitializeComponent();
         }
+
+        private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
+        }
+
+        private void AboutButton_Click(Object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hey! This is my first Windows app \nv0.01");
+        }
     }
 }
