@@ -8,6 +8,16 @@ namespace BankingApp.Models
 {
     internal class Account
     {
+        private static int staticId;
+        static Account()
+        {
+            staticId = 0;
+        }
+        private static int nextId()
+        {
+            return staticId++;
+        }
+
         private string _firstName;
         private string _lastName;
         private string _phoneNumber;
