@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,15 +27,13 @@ namespace BankingApp
 
         private void Btn_Consultant_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            AccessValidator accessValidator = new AccessValidator(false);
             Close();
         }
 
         private void Btn_Manager_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            AccessValidator accessValidator = new AccessValidator(true);
             Close();
         }
     }
