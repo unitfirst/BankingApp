@@ -5,8 +5,186 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankingApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" 
+        Height="560" 
+        Width="940"
+        MinWidth="640"
+        MinHeight="480">
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="10"    />
+            <RowDefinition Height="20"    />
+            <RowDefinition Height="10"    />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            x:Name="UserRole"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10 0"
+            Grid.ColumnSpan="2"
+            Text="Role:"
+            Foreground="LightSeaGreen"/>
+
+        <Button 
+            x:Name="ChangeUserButton"
+            Margin="00 0 10 0"
+            Content="Change role"
+            Grid.Column="5"
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            Width="90"
+            Height="20"
+            FontWeight="Medium" 
+            Background="Transparent"
+            BorderThickness="0" 
+            Click="ChangeUserButton_Click"></Button>
+
+        <Button 
+            x:Name="AboutButton"
+            Margin="10 0"
+            Content="About"
+            Grid.Column="6"
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            Width="60"
+            Height="20"
+            FontWeight="Medium" 
+            Background="Transparent"
+            BorderThickness="0"
+            Click="AboutButton_Click" />
+
+        <DataGrid 
+            x:Name="DgAccounts"
+            Grid.Column="1"
+            Grid.Row="3"
+            Grid.RowSpan="7"
+            Grid.ColumnSpan="4"
+            Margin="20"
+            AutoGenerateColumns="False"
+            CanUserSortColumns="True"
+            CanUserReorderColumns="True"
+            CanUserResizeColumns="True"
+            BorderThickness="1"
+            BorderBrush="LightGray"
+            HorizontalGridLinesBrush="LightGray"
+            VerticalGridLinesBrush="LightGray">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding AddTime}"
+                    Visibility="Hidden"
+                    Header="Edited" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn
+                    Binding="{Binding Id}"
+                    x:Name="IdCol"
+                    Header="ID" 
+                    Width="50" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn 
+                    Binding="{Binding FirstName}"
+                    x:Name="FirstNameCol"
+                    Header="First name" 
+                    Width="120*" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn 
+                    Binding="{Binding LastName}"
+                    x:Name="LastNameCol"
+                    Header="Last name" 
+                    Width="120*" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn 
+                    Binding="{Binding PhoneNumber}"
+                    x:Name="PhoneCol"
+                    Header="Phone" 
+                    Width="70*" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn 
+                    Binding="{Binding Passport}"
+                    x:Name="PassportCol"
+                    Header="Passport" 
+                    Width="70*" 
+                    IsReadOnly="True"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <StackPanel
+            Orientation="Vertical"
+            Grid.Column="5"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="7"
+            Margin="20">
+
+            <TextBlock 
+                x:Name="firstNameTxtValue"
+                Text="First name" 
+                Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock 
+                x:Name="lastNameTxtValue"
+                Text="Last name" 
+                Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock 
+                x:Name="phoneNumberTxtValue"
+                Text="Phone number" 
+                Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            <TextBlock 
+                x:Name="passportTxtValue"
+                Text="Passport" 
+                Margin="0 15 0 5"/>
+            <TextBox Height="30"></TextBox>
+            
+            <Button x:Name="Btn_ChangeAccountInfo" Height="30" Margin="0 30" Content="APPLY"/>
+
+        </StackPanel>
+
+        <StackPanel 
+            Orientation="Horizontal"
+            Grid.Column="1"
+            Grid.Row="10"
+            Grid.ColumnSpan="6">
+
+            <TextBlock 
+            x:Name="AccountsCountText"
+            Margin="10 0 5 0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Foreground="Gray"/>
+
+            <TextBlock
+                x:Name="EditTimeInfo"
+                Margin="10 0 10 0"
+                Text="{Binding Path=SelectedItem.Details, ElementName=DgAccounts, StringFormat={}{0:'Edited: 'ddd dd.MM.yyyy '//' HH':'mm':'ss 'UTC'}}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Foreground="LightCoral"/>
+
+        </StackPanel>
     </Grid>
 </Window>
