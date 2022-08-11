@@ -15,13 +15,12 @@ namespace BankingApp.Services
     internal class Repository: IEnumerable
     {
         private readonly BindingList<Account> list = new BindingList<Account>();
+        private string path { get; set; }
 
         public Repository(string path)
         {
             this.path = path;
         }
-
-        private string path { get; set; }
 
         public BindingList<Account> GetList()
         {
