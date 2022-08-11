@@ -2,6 +2,7 @@
 using BankingApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -23,39 +24,44 @@ namespace BankingApp
     /// </summary>
     public partial class MainWindow : Window
     {
-      private Repository repo;
-      private string path = $"{Environment.CurrentDirectory}\\accounts.json";
-      private BindingList<Account> accounts;
-      public MainWindow(bool access)
-      
-      {
-          InitializeComponent();
+        private Repository repo;
+        private string path = $"{Environment.CurrentDirectory}\\accounts.json";
+        private ObservableCollection<Account> accounts = new ObservableCollection<Account>();
+        public MainWindow(bool access)
 
-          if (!access)
-          {
-              UserRole.Text = "Role: Consultant";
-          }
-          else
-          {
-              UserRole.Text = "Role: Manager";
-          }
+        {
+            InitializeComponent();
 
-          repo = new Repository(path);
-          DataContext = repo;
-          accounts = repo.GetList();
-      }
+            if (!access)
+            {
+                UserRole.Text = "Role: Consultant";
+            }
+            else
+            {
+                UserRole.Text = "Role: Manager";
+            }
 
-      private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
-      {
-          LoginWindow loginWindow = new LoginWindow();
-          loginWindow.Show();
-          Close();
-      }
+            repo = new Repository(path);
+            DataContext = repo;
+            //accounts = repo.GetList();
+            DgAccounts.ItemsSource = accounts;
+        }
 
-      private void AboutButton_Click(Object sender, RoutedEventArgs e)
-      {
-          MessageBox.Show("Hey! This is my first Windows app \nv0.10");
-      }
+        private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
+        }
 
+        private void AboutButton_Click(Object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hey! This is my first Windows app \nv0.10");
+        }
+
+        private void Btn_ChangeAccountInfo_Click(object sender, RoutedEventArgs e)
+        {
+            accounts.Add(new Account(firstNameTxt.Text, lastNameTxt.Text, phoneNumberTxt.Text, Convert.ToInt32(passportTxt.Text), DateTime.Now, DateTime.Now));
+        }
     }
 }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -14,7 +15,7 @@ namespace BankingApp.Services
 {
     internal class Repository: IEnumerable
     {
-        private readonly BindingList<Account> list = new BindingList<Account>();
+        private readonly ObservableCollection<Account> list = new ObservableCollection<Account>();
 
         public Repository(string path)
         {
@@ -23,17 +24,17 @@ namespace BankingApp.Services
 
         private string path { get; set; }
 
-        public BindingList<Account> GetList()
+        public ObservableCollection<Account> GetList()
         {
             if (!File.Exists(path))
             {
                 File.CreateText(path).Dispose();
-                return new BindingList<Account>();
+                return new ObservableCollection<Account>();
             }
 
             using (var reader = File.OpenText(path))
             {
-                var result = JsonConvert.DeserializeObject<BindingList<Account>>(reader.ReadToEnd());
+                var result = JsonConvert.DeserializeObject<ObservableCollection<Account>>(reader.ReadToEnd());
                 return result;
             }
         }

@@ -71,6 +71,16 @@ namespace BankingApp.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public Account(string firstName, string lastName, string phoneNumber, int passport, DateTime addTime, DateTime lastUpdated)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            Passport = passport;
+            AddTime = addTime;
+            LastUpdated = lastUpdated;
+        }
+
         public string ToString(bool access)
         {
             return
