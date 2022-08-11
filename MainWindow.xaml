@@ -94,14 +94,21 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Binding="{Binding AddTime}"
-                    Visibility="Hidden"
-                    Header="Edited" 
+                    x:Name="AddTimeCol"
+                    Visibility="Visible"
+                    Header="Added" 
                     IsReadOnly="True"/>
                 <DataGridTextColumn
+                    Binding="{Binding LastUpdated}"
+                    x:Name="LastUpdateCol"
+                    Header="Edited" 
+                    Width="50" 
+                    IsReadOnly="True"/>
+                <DataGridTextColumn 
                     Binding="{Binding Id}"
                     x:Name="IdCol"
                     Header="ID" 
-                    Width="50" 
+                    Width="30*" 
                     IsReadOnly="True"/>
                 <DataGridTextColumn 
                     Binding="{Binding FirstName}"
@@ -140,27 +147,32 @@
             Margin="20">
 
             <TextBlock 
-                x:Name="firstNameTxtValue"
                 Text="First name" 
                 Margin="0 15 0 5"/>
-            <TextBox Height="30"></TextBox>
+            <TextBox
+                x:Name="firstNameTxt"
+                Height="30"/>
             <TextBlock 
-                x:Name="lastNameTxtValue"
                 Text="Last name" 
                 Margin="0 15 0 5"/>
-            <TextBox Height="30"></TextBox>
+            <TextBox
+                x:Name="lastNameTxt"
+                Height="30"/>
             <TextBlock 
-                x:Name="phoneNumberTxtValue"
                 Text="Phone number" 
+
                 Margin="0 15 0 5"/>
-            <TextBox Height="30"></TextBox>
+            <TextBox
+                x:Name="phoneNumberTxt"
+                Height="30"></TextBox>
             <TextBlock 
-                x:Name="passportTxtValue"
                 Text="Passport" 
                 Margin="0 15 0 5"/>
-            <TextBox Height="30"></TextBox>
-            
-            <Button x:Name="Btn_ChangeAccountInfo" Height="30" Margin="0 30" Content="APPLY"/>
+            <TextBox
+                x:Name="passportTxt"
+                Height="30"/>
+
+            <Button x:Name="Btn_ChangeAccountInfo" Height="30" Margin="0 30" Content="APPLY" Click="Btn_ChangeAccountInfo_Click"/>
 
         </StackPanel>
 
