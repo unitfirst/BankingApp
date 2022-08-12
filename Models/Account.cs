@@ -10,6 +10,16 @@ namespace BankingApp.Models
 {
     internal class Account
     {
+        private static int staticId;
+        static Account()
+        {
+            staticId = 0;
+        }
+        private static int nextId()
+        {
+            return staticId++;
+        }
+
         private int id;
         private string firstName;
         private string lastName;
@@ -73,6 +83,7 @@ namespace BankingApp.Models
 
         public Account(string firstName, string lastName, string phoneNumber, int passport, DateTime addTime, DateTime lastUpdated)
         {
+            Id = nextId();
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
