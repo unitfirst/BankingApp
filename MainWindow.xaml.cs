@@ -53,31 +53,6 @@ namespace BankingApp
             loginWindow.Show();
             Close();
         }
-
-        {
-            InitializeComponent();
-
-            if (!access)
-            {
-                UserRole.Text = "Role: Consultant";
-            }
-            else
-            {
-                UserRole.Text = "Role: Manager";
-            }
-
-            repo = new Repository(path);
-            DataContext = repo;
-            //accounts = repo.GetList();
-            DgAccounts.ItemsSource = accounts;
-        }
-
-        private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            Close();
-        }
         
         private void AboutButton_Click(Object sender, RoutedEventArgs e)
         {
