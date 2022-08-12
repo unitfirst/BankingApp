@@ -54,6 +54,31 @@ namespace BankingApp
             Close();
         }
 
+        {
+            InitializeComponent();
+
+            if (!access)
+            {
+                UserRole.Text = "Role: Consultant";
+            }
+            else
+            {
+                UserRole.Text = "Role: Manager";
+            }
+
+            repo = new Repository(path);
+            DataContext = repo;
+            //accounts = repo.GetList();
+            DgAccounts.ItemsSource = accounts;
+        }
+
+        private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
+        }
+        
         private void AboutButton_Click(Object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Hey! This is my first Windows app \nv0.10");
@@ -62,6 +87,7 @@ namespace BankingApp
         private void Btn_ChangeAccountInfo_Click(object sender, RoutedEventArgs e)
         {
             accounts.Add(new Account(firstNameTxt.Text, lastNameTxt.Text, phoneNumberTxt.Text, Convert.ToInt32(passportTxt.Text), DateTime.Now, DateTime.Now));
+
             ClearInputs();
         }
 
@@ -87,7 +113,6 @@ namespace BankingApp
                 passportTxt.Text = item.Passport.ToString();
 
             }
-
         }
     }
 }
