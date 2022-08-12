@@ -62,6 +62,32 @@ namespace BankingApp
         private void Btn_ChangeAccountInfo_Click(object sender, RoutedEventArgs e)
         {
             accounts.Add(new Account(firstNameTxt.Text, lastNameTxt.Text, phoneNumberTxt.Text, Convert.ToInt32(passportTxt.Text), DateTime.Now, DateTime.Now));
+            ClearInputs();
+        }
+
+        private void ClearInputs()
+        {
+            firstNameTxt.Text = "";
+            lastNameTxt.Text = "";
+            phoneNumberTxt.Text = "";
+            passportTxt.Text = "";
+        }
+
+        private void DgAccounts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = sender as DataGrid;
+
+            if (dg.SelectedItem != null)
+            {
+                var item = dg.SelectedItem as Account;
+
+                firstNameTxt.Text = item.FirstName;
+                lastNameTxt.Text = item.LastName;
+                phoneNumberTxt.Text = item.PhoneNumber;
+                passportTxt.Text = item.Passport.ToString();
+
+            }
+
         }
     }
 }

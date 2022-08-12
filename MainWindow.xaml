@@ -89,7 +89,8 @@
             BorderThickness="1"
             BorderBrush="LightGray"
             HorizontalGridLinesBrush="LightGray"
-            VerticalGridLinesBrush="LightGray">
+            VerticalGridLinesBrush="LightGray" 
+            SelectionChanged="DgAccounts_SelectionChanged">
 
             <DataGrid.Columns>
                 <DataGridTextColumn
