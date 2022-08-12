@@ -9,7 +9,7 @@
         Height="560" 
         Width="940"
         MinWidth="640"
-        MinHeight="480">
+        MinHeight="480" Loaded="Window_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -173,7 +173,11 @@
                 x:Name="passportTxt"
                 Height="30"/>
 
-            <Button x:Name="Btn_ChangeAccountInfo" Height="30" Margin="0 30" Content="APPLY" Click="Btn_ChangeAccountInfo_Click"/>
+            <Button x:Name="Btn_ChangeAccountInfo" 
+                    Height="30" 
+                    Margin="0 30" 
+                    Content="ADD" 
+                    Click="Btn_ChangeAccountInfo_Click"/>
 
         </StackPanel>
 
