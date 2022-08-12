@@ -98,6 +98,7 @@ namespace BankingApp
             ClearInputs();
         }        
 
+
         private void ClearInputs()
         {
             firstNameTxt.Text = "";
