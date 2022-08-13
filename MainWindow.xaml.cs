@@ -28,7 +28,6 @@ namespace BankingApp
         private Repository repo { get; }
         private ObservableCollection<Account> accounts = new ObservableCollection<Account>();
         private Account item { get; set; }
-        private DataGrid dg { get; set; }
 
         public MainWindow(bool access)
 
