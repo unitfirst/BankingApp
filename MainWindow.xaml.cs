@@ -29,6 +29,7 @@ namespace BankingApp
         private ObservableCollection<Account> accounts = new ObservableCollection<Account>();
         private Account item { get; set; }
         private DataGrid dg { get; set; }
+
         public MainWindow(bool access)
 
         {
@@ -38,6 +39,7 @@ namespace BankingApp
             if (!access)
             {
                 UserRole.Text = "Role: Consultant";
+                DgAccounts.CanUserAddRows = false;
             }
             else
             {
@@ -47,6 +49,15 @@ namespace BankingApp
             repo = new Repository(path);
             DataContext = repo;
             //accounts = repo.GetList();
+
+        }
+
+        private void ClearInputs()
+        {
+            firstNameTxt.Text = "";
+            lastNameTxt.Text = "";
+            phoneNumberTxt.Text = "";
+            passportTxt.Text = "";
 
         }
 
@@ -70,6 +81,19 @@ namespace BankingApp
 
         private void Btn_ChangeAccountInfo_Click(object sender, RoutedEventArgs e)
         {
+
+            try
+            {
+                if(item == null)
+                {
+                    accounts.Add(new Account(
+                        firstNameTxt.Text, 
+                        lastNameTxt.Text, 
+                        phoneNumberTxt.Text, 
+                        Convert.ToInt32(passportTxt.Text)));
+
+                    ClearInputs();
+
             DataGrid dg = sender as DataGrid;
             item = DgAccounts.SelectedItem as Account;
 
@@ -86,6 +110,7 @@ namespace BankingApp
                 {
                     accounts.Add(new Account(firstNameTxt.Text, lastNameTxt.Text, phoneNumberTxt.Text, Convert.ToInt32(passportTxt.Text), DateTime.Now, DateTime.Now));
                     Btn_ChangeAccountInfo.Content = "ADD";
+
                 }
             }
             catch (Exception ex)
@@ -93,34 +118,22 @@ namespace BankingApp
                 MessageBox.Show(ex.Message);
                 this.Close();
             }
-
-
+        }        
+        
             ClearInputs();
         }        
 
-
-        private void ClearInputs()
-        {
-            firstNameTxt.Text = "";
-            lastNameTxt.Text = "";
-            phoneNumberTxt.Text = "";
-            passportTxt.Text = "";
-        }
-
         private void DgAccounts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid dg = sender as DataGrid;
-            item = DgAccounts.SelectedItem as Account;
-
             Btn_ChangeAccountInfo.Content = "APPLY";
+            item = DgAccounts.SelectedItem as Account;
+        }
 
-            if (item != null)
-            {
-                firstNameTxt.Text = item.FirstName;
-                lastNameTxt.Text = item.LastName;
-                phoneNumberTxt.Text = item.PhoneNumber;
-                passportTxt.Text = item.Passport.ToString();
-            }
+        private void DgAccounts_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Btn_ChangeAccountInfo.Content = "ADD";
+            item = null;
+            ClearInputs();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BankingApp.Models
         private static int staticId;
         static Account()
         {
-            staticId = 0;
+            staticId = 1;
         }
         private static int nextId()
         {
@@ -81,15 +81,15 @@ namespace BankingApp.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Account(string firstName, string lastName, string phoneNumber, int passport, DateTime addTime, DateTime lastUpdated)
+        public Account(string firstName, string lastName, string phoneNumber, int passport)
         {
             Id = nextId();
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Passport = passport;
-            AddTime = addTime;
-            LastUpdated = lastUpdated;
+            AddTime = DateTime.Now;
+            LastUpdated = DateTime.Now;
         }
 
         public string ToString(bool access)

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BankingApp.Services
 {
-    internal class Repository: IEnumerable
+    internal class Repository : IEnumerable
     {
         private readonly ObservableCollection<Account> list = new ObservableCollection<Account>();
 

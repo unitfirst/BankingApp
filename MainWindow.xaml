@@ -90,7 +90,8 @@
             BorderBrush="LightGray"
             HorizontalGridLinesBrush="LightGray"
             VerticalGridLinesBrush="LightGray" 
-            SelectionChanged="DgAccounts_SelectionChanged">
+            SelectionChanged="DgAccounts_SelectionChanged" 
+            MouseDown="DgAccounts_MouseDown">
 
             <DataGrid.Columns>
                 <DataGridTextColumn
@@ -152,25 +153,28 @@
                 Margin="0 15 0 5"/>
             <TextBox
                 x:Name="firstNameTxt"
+                Text="{Binding ElementName=DgAccounts, Path=SelectedItem.FirstName, Mode=TwoWay}"
                 Height="30"/>
             <TextBlock 
                 Text="Last name" 
                 Margin="0 15 0 5"/>
             <TextBox
                 x:Name="lastNameTxt"
+                Text="{Binding ElementName=DgAccounts, Path=SelectedItem.LastName, Mode=TwoWay}"
                 Height="30"/>
             <TextBlock 
                 Text="Phone number" 
-
                 Margin="0 15 0 5"/>
             <TextBox
                 x:Name="phoneNumberTxt"
+                Text="{Binding ElementName=DgAccounts, Path=SelectedItem.PhoneNumber, Mode=TwoWay}"
                 Height="30"></TextBox>
             <TextBlock 
                 Text="Passport" 
                 Margin="0 15 0 5"/>
             <TextBox
                 x:Name="passportTxt"
+                Text="{Binding ElementName=DgAccounts, Path=SelectedItem.Passport, Mode=TwoWay}"
                 Height="30"/>
 
             <Button x:Name="Btn_ChangeAccountInfo" 
