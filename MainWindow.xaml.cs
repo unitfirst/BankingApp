@@ -80,22 +80,6 @@ namespace BankingApp
 
         private void Btn_ChangeAccountInfo_Click(object sender, RoutedEventArgs e)
         {
-
-            try
-            {
-                if(item == null)
-                {
-                    accounts.Add(new Account(
-                        firstNameTxt.Text, 
-                        lastNameTxt.Text, 
-                        phoneNumberTxt.Text, 
-                        Convert.ToInt32(passportTxt.Text)));
-
-                    ClearInputs();
-
-            DataGrid dg = sender as DataGrid;
-            item = DgAccounts.SelectedItem as Account;
-
             try
             {
                 if (item != null)
